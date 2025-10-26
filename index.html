@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner - Temukan Vendor Pernikahan Terbaik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🎉 Special Wedding Package - Discount up to 50%! 🎉
+    </div>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <div class="header">
+            <div class="search-container">
+                <div class="search-box">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" id="searchInput" placeholder="Cari vendor, paket, atau lokasi...">
+                    <div class="camera-icon">📷</div>
+                </div>
+            </div>
+            
+            <div class="header-icons">
+                <button class="icon-btn" onclick="openModal('budgetModal')">
+                    <span style="font-size: 1.2rem; margin-right: 0.3rem;">💰</span>
+                    Budget
+                </button>
+                <button class="icon-btn" onclick="openModal('checklistModal')">
+                    <span style="font-size: 1.2rem; margin-right: 0.3rem;">📋</span>
+                    Checklist
+                </button>
+                <button class="icon-btn" onclick="showIconsPage()">
+                    <span style="font-size: 1.2rem; margin-right: 0.3rem;">🎨</span>
+                    Icons
+                </button>
+                <button class="icon-btn" onclick="showAIPage()">
+                    <span style="font-size: 1.2rem; margin-right: 0.3rem;">🤖</span>
+                    AI
+                </button>
+            </div>
+        </div>
+
+        <!-- Promo Badges -->
+        <div class="promo-badges">
+            <div class="badge">
+                <span class="badge-icon">🎁</span>
+                Free Consultation
+            </div>
+            <div class="badge">
+                <span class="badge-icon">💝</span>
+                Cashback 10%
+            </div>
+            <div class="badge">
+                <span class="badge-icon">⭐</span>
+                VIP Member
+            </div>
+            <div class="badge">
+                <span class="badge-icon">🏷️</span>
+                Voucher 500K
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="category-scroll">
+            <div class="category-item active" onclick="filterVendors('all', event)">
+                <div class="category-icon-circle">🎯</div>
+                <div class="category-name">All</div>
+            </div>
+            <div class="category-item" onclick="filterVendors('WO', event)">
+                <div class="category-icon-circle">📋</div>
+                <div class="category-name">WO</div>
+            </div>
+            <div class="category-item" onclick="filterVendors('MC', event)">
+                <div class="category-icon-circle">🎤</div>
+                <div class="category-name">MC</div>
+            </div>
+            <div class="category-item" onclick="filterVendors('Band', event)">
+                <div class="category-icon-circle">🎵</div>
+                <div class="category-name">Band</div>
+            </div>
+            <div class="category-item" onclick="filterVendors('MUA', event)">
+                <div class="category-icon-circle">💄</div>
+                <div class="category-name">MUA</div>
+            </div>
+            <div class="category-item" onclick="filterVendors('Dekorasi', event)">
+                <div class="category-icon-circle">🌸</div>
+                <div class="category-name">Dekorasi</div>
+            </div>
+            <div class="category-item" onclick="filterVendors('Fotografi', event)">
+                <div class="category-icon-circle">📸</div>
+                <div class="category-name">Foto</div>
+            </div>
+            <div class="category-item" onclick="filterVendors('Catering', event)">
+                <div class="category-icon-circle">🍽️</div>
+                <div class="category-name">Catering</div>
+            </div>
+        </div>
+        <!-- ========== FLASH DEAL SECTION ========== -->
+        <div class="flash-deal-section">
+            <div class="section-header">
+                <h3>🔥 Flash Deal</h3>
+                <span class="see-all" onclick="showAllDeals()">Lihat Semua</span>
+            </div>
+            
+            <div class="flash-deal-scroll">
+                <!-- Deal 1 -->
+                <div class="flash-deal-card" onclick="openDeal(1)">
+                    <div class="deal-badge">HOT</div>
+                    <div class="deal-icon">💍</div>
+                    <div class="deal-title">Paket All-Inclusive</div>
+                    <div class="deal-price">
+                        <span class="old-price">Rp 250jt</span>
+                        <span class="new-price">Rp 125jt</span>
+                    </div>
+                    <div class="deal-desc">WO + Dekorasi + Catering</div>
+                    <div class="deal-time">⏰ 2 Hari Lagi</div>
+                </div>
+                
+                <!-- Deal 2 -->
+                <div class="flash-deal-card" onclick="openDeal(2)">
+                    <div class="deal-badge">NEW</div>
+                    <div class="deal-icon">📸</div>
+                    <div class="deal-title">Fotografi Premium</div>
+                    <div class="deal-price">
+                        <span class="old-price">Rp 15jt</span>
+                        <span class="new-price">Rp 7.5jt</span>
+                    </div>
+                    <div class="deal-desc">8 Jam + Album + Digital File</div>
+                    <div class="deal-time">⏰ 5 Hari Lagi</div>
+                </div>
+                
+                <!-- Deal 3 -->
+                <div class="flash-deal-card" onclick="openDeal(3)">
+                    <div class="deal-badge">POPULAR</div>
+                    <div class="deal-icon">💄</div>
+                    <div class="deal-title">MUA Eksklusif</div>
+                    <div class="deal-price">
+                        <span class="old-price">Rp 8jt</span>
+                        <span class="new-price">Rp 4.8jt</span>
+                    </div>
+                    <div class="deal-desc">Bridal + Family Makeup</div>
+                    <div class="deal-time">⏰ 3 Hari Lagi</div>
+                </div>
+                
+                <!-- Deal 4 -->
+                <div class="flash-deal-card" onclick="openDeal(4)">
+                    <div class="deal-badge">TRENDING</div>
+                    <div class="deal-icon">🎵</div>
+                    <div class="deal-title">Live Band Profesional</div>
+                    <div class="deal-price">
+                        <span class="old-price">Rp 12jt</span>
+                        <span class="new-price">Rp 8.4jt</span>
+                    </div>
+                    <div class="deal-desc">4 Musisi + 3 Jam Perform</div>
+                    <div class="deal-time">⏰ 7 Hari Lagi</div>
+                </div>
+                
+                <!-- Deal 5 -->
+                <div class="flash-deal-card" onclick="openDeal(5)">
+                    <div class="deal-badge">LUXURY</div>
+                    <div class="deal-icon">🏨</div>
+                    <div class="deal-title">Venue 5 Star</div>
+                    <div class="deal-price">
+                        <span class="old-price">Rp 80jt</span>
+                        <span class="new-price">Rp 56jt</span>
+                    </div>
+                    <div class="deal-desc">Ballroom + Catering 200 Pax</div>
+                    <div class="deal-time">⏰ 1 Hari Lagi</div>
+                </div>
+            </div>
+        </div>
+        <!-- ========== END FLASH DEAL SECTION ========== -->
+        <!-- Vendor Grid -->
+        <div class="vendor-grid" id="vendorGrid">
+            <!-- Vendors will be populated by JavaScript -->
+        </div>
+
+        <!-- Promo Banner -->
+        <div class="banner-promo">
+            <div class="promo-card">
+                <div class="promo-badge">FLASH SALE</div>
+                <div class="promo-title">Wedding Package Exclusive</div>
+                <div class="promo-subtitle">Diskon hingga 50% + Free Consultation + Cashback 10%</div>
+                <button class="btn btn-primary" style="margin-top: 1rem; padding: 0.8rem 2rem;" onclick="showAIPage()">
+                    Dapatkan Sekarang
+                </button>
+            </div>
+        </div>
+
+        <!-- Featured Section -->
+        <div class="section-title">
+            <span>💫 Vendor Terpopuler</span>
+            <span class="see-all" onclick="filterVendors('all', event)">Lihat Semua</span>
+        </div>
+
+        <div class="vendor-grid">
+            <!-- Featured vendors will be shown here -->
+        </div>
+    </div>
+
+    <!-- WO Page -->
+    <div id="woPage" class="page">
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="icon-btn" onclick="backToHome()" style="flex: 0; padding: 0.5rem; background: #fff; color: #d4a574; border: 2px solid #d4a574;">
+                    <span style="font-size: 1.2rem;">←</span> Back
+                </button>
+                <h2 style="color: #d4a574; margin: 0;">Wedding Organizers</h2>
+            </div>
+        </div>
+
+        <!-- WO Filters -->
+        <div style="padding: 1rem; background: white; border-bottom: 1px solid #f0f0f0;">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; overflow-x: auto; padding-bottom: 0.5rem;">
+                <button class="filter-btn-region active" onclick="filterByRegion('all', event)">Semua</button>
+                <button class="filter-btn-region" onclick="filterByRegion('Jakarta', event)">Jakarta</button>
+                <button class="filter-btn-region" onclick="filterByRegion('Bandung', event)">Bandung</button>
+                <button class="filter-btn-region" onclick="filterByRegion('Surabaya', event)">Surabaya</button>
+                <button class="filter-btn-region" onclick="filterByRegion('Bali', event)">Bali</button>
+                <button class="filter-btn-region" onclick="filterByRegion('Yogyakarta', event)">Yogyakarta</button>
+            </div>
+            
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="searchWO" placeholder="Cari nama WO..." style="flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 0.9rem;">
+                <select id="sortWO" onchange="sortWO()" style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 0.9rem;">
+                    <option value="popular">Terpopuler</option>
+                    <option value="rating">Rating Tertinggi</option>
+                    <option value="price-low">Harga Terendah</option>
+                    <option value="price-high">Harga Tertinggi</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- WO List -->
+        <div class="wo-list" id="woList">
+            <!-- WO cards will be populated by JavaScript -->
+        </div>
+        
+        <div style="padding: 1rem; text-align: center; color: #999; background: white;">
+            Menampilkan <span id="woCount" style="font-weight: bold; color: #d4a574;">0</span> Wedding Organizer
+        </div>
+    </div>
+
+    <!-- MC Specialist Page -->
+    <div id="mcPage" class="page">
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="icon-btn" onclick="backToHome()" style="flex: 0; padding: 0.5rem; background: #fff; color: #d4a574; border: 2px solid #d4a574;">
+                    <span style="font-size: 1.2rem;">←</span> Back
+                </button>
+                <h2 style="color: #d4a574; margin: 0;">Master of Ceremony</h2>
+            </div>
+        </div>
+
+        <!-- MC Filters -->
+        <div class="mc-filters">
+            <div class="filter-group-mc">
+                <button class="filter-btn-mc active" onclick="filterMCByLocation('all', event)">Semua</button>
+                <button class="filter-btn-mc" onclick="filterMCByLocation('Jakarta', event)">Jakarta</button>
+                <button class="filter-btn-mc" onclick="filterMCByLocation('Bandung', event)">Bandung</button>
+                <button class="filter-btn-mc" onclick="filterMCByLocation('Surabaya', event)">Surabaya</button>
+                <button class="filter-btn-mc" onclick="filterMCByLocation('Bali', event)">Bali</button>
+            </div>
+            
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="searchMC" placeholder="Cari nama MC..." style="flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 0.9rem;">
+                <select id="sortMC" onchange="sortMC()" style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 0.9rem;">
+                    <option value="rating">Rating Tertinggi</option>
+                    <option value="experience">Pengalaman</option>
+                    <option value="price-low">Harga Terendah</option>
+                    <option value="price-high">Harga Tertinggi</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- MC List -->
+        <div class="mc-list" id="mcList">
+            <!-- MC cards will be populated by JavaScript -->
+        </div>
+        
+        <div style="padding: 1rem; text-align: center; color: #999; background: white;">
+            Menampilkan <span id="mcCount" style="font-weight: bold; color: #d4a574;">0</span> Master of Ceremony
+        </div>
+    </div>
+
+    <!-- Icons Page -->
+    <div id="iconsPage" class="page">
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="icon-btn" onclick="backToHome()" style="flex: 0; padding: 0.5rem; background: #fff; color: #d4a574; border: 2px solid #d4a574;">
+                    <span style="font-size: 1.2rem;">←</span> Back
+                </button>
+                <h2 style="color: #d4a574; margin: 0;">Wedding Icons Collection</h2>
+            </div>
+        </div>
+
+        <div class="icon-grid">
+            <!-- Wedding Icons -->
+            <div class="icon-item" onclick="copyIcon('💒')">
+                <div class="icon-large">💒</div>
+                <div class="icon-name">Gereja</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('👰')">
+                <div class="icon-large">👰</div>
+                <div class="icon-name">Pengantin Wanita</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🤵')">
+                <div class="icon-large">🤵</div>
+                <div class="icon-name">Pengantin Pria</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('💍')">
+                <div class="icon-large">💍</div>
+                <div class="icon-name">Cincin</div>
+            </div>
+            
+            <!-- Vendor Icons -->
+            <div class="icon-item" onclick="copyIcon('📋')">
+                <div class="icon-large">📋</div>
+                <div class="icon-name">WO</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🎤')">
+                <div class="icon-large">🎤</div>
+                <div class="icon-name">MC</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🎵')">
+                <div class="icon-large">🎵</div>
+                <div class="icon-name">Band</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('💄')">
+                <div class="icon-large">💄</div>
+                <div class="icon-name">MUA</div>
+            </div>
+            
+            <!-- More Icons -->
+            <div class="icon-item" onclick="copyIcon('🌸')">
+                <div class="icon-large">🌸</div>
+                <div class="icon-name">Dekorasi</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('📸')">
+                <div class="icon-large">📸</div>
+                <div class="icon-name">Fotografi</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🍽️')">
+                <div class="icon-large">🍽️</div>
+                <div class="icon-name">Catering</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('💌')">
+                <div class="icon-large">💌</div>
+                <div class="icon-name">Undangan</div>
+            </div>
+            
+            <!-- Additional Icons -->
+            <div class="icon-item" onclick="copyIcon('🎁')">
+                <div class="icon-large">🎁</div>
+                <div class="icon-name">Hadiah</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('💃')">
+                <div class="icon-large">💃</div>
+                <div class="icon-name">Penari</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🎂')">
+                <div class="icon-large">🎂</div>
+                <div class="icon-name">Kue</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🥂')">
+                <div class="icon-large">🥂</div>
+                <div class="icon-name">Toast</div>
+            </div>
+            
+            <!-- Utility Icons -->
+            <div class="icon-item" onclick="copyIcon('💰')">
+                <div class="icon-large">💰</div>
+                <div class="icon-name">Budget</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('📅')">
+                <div class="icon-large">📅</div>
+                <div class="icon-name">Kalender</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('📍')">
+                <div class="icon-large">📍</div>
+                <div class="icon-name">Lokasi</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('⭐')">
+                <div class="icon-large">⭐</div>
+                <div class="icon-name">Rating</div>
+            </div>
+            
+            <!-- Action Icons -->
+            <div class="icon-item" onclick="copyIcon('💬')">
+                <div class="icon-large">💬</div>
+                <div class="icon-name">Chat</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('❤️')">
+                <div class="icon-large">❤️</div>
+                <div class="icon-name">Cinta</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🎉')">
+                <div class="icon-large">🎉</div>
+                <div class="icon-name">Perayaan</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🏷️')">
+                <div class="icon-large">🏷️</div>
+                <div class="icon-name">Diskon</div>
+            </div>
+
+            <!-- More Wedding Icons -->
+            <div class="icon-item" onclick="copyIcon('🌹')">
+                <div class="icon-large">🌹</div>
+                <div class="icon-name">Mawar</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🎶')">
+                <div class="icon-large">🎶</div>
+                <div class="icon-name">Musik</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('📷')">
+                <div class="icon-large">📷</div>
+                <div class="icon-name">Kamera</div>
+            </div>
+            <div class="icon-item" onclick="copyIcon('🎊')">
+                <div class="icon-large">🎊</div>
+                <div class="icon-name">Konfeti</div>
+            </div>
+        </div>
+
+        <div style="padding: 1rem; text-align: center; color: #666; background: white;">
+            <p>Klik icon untuk menyalin ke clipboard! 📋</p>
+        </div>
+    </div>
+
+    <!-- AI Recommendations Page -->
+    <div id="aiPage" class="page">
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="icon-btn" onclick="backToHome()" style="flex: 0; padding: 0.5rem; background: #fff; color: #d4a574; border: 2px solid #d4a574;">
+                    <span style="font-size: 1.2rem;">←</span> Back
+                </button>
+                <h2 style="color: #d4a574; margin: 0;">AI Wedding Assistant</h2>
+            </div>
+        </div>
+
+        <div class="ai-section">
+            <div class="ai-title">🤖 Rekomendasi AI untuk Anda</div>
+            <div style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                Tentukan vendor terbaik sesuai preferensi dan budget pernikahan Anda
+            </div>
+            
+            <div class="filter-group">
+                <select id="themeSelect" class="filter-select" onchange="generateRecommendations()">
+                    <option value="">Pilih Tema Pernikahan</option>
+                    <option value="Modern">Modern & Minimalis</option>
+                    <option value="Tradisional">Tradisional & Adat</option>
+                    <option value="Garden">Garden & Outdoor</option>
+                    <option value="Beach">Beach & Destination</option>
+                    <option value="Classic">Classic & Elegant</option>
+                </select>
+                
+                <select id="budgetSelect" class="filter-select" onchange="generateRecommendations()">
+                    <option value="">Pilih Budget</option>
+                    <option value="50-100">50 - 100 juta</option>
+                    <option value="100-200">100 - 200 juta</option>
+                    <option value="200-500">200 - 500 juta</option>
+                    <option value="500+">500+ juta</option>
+                </select>
+            </div>
+            
+            <div id="recommendations" style="background: rgba(255,255,255,0.2); padding: 1.2rem; border-radius: 12px; margin-top: 1.5rem; font-size: 0.95rem; line-height: 1.6;">
+                🎯 Pilih tema dan budget pernikahan untuk mendapatkan rekomendasi vendor terbaik!
+            </div>
+        </div>
+
+        <!-- Recommended Vendors -->
+        <div style="padding: 1.5rem 1rem;">
+            <h3 style="color: #d4a574; margin-bottom: 1rem; font-size: 1.3rem;">✨ Vendor Rekomendasi AI</h3>
+            <div class="vendor-grid" id="aiVendorGrid">
+                <!-- AI recommended vendors will appear here -->
+            </div>
+        </div>
+
+        <!-- AI Tips -->
+        <div style="background: white; margin: 1rem; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h4 style="color: #d4a574; margin-bottom: 1rem;">💡 Tips dari AI Assistant</h4>
+            <div style="color: #666; line-height: 1.6; font-size: 0.9rem;">
+                <p>• <strong>Budget Planning:</strong> Alokasikan 40% untuk venue & catering, 20% untuk dokumentasi, 15% untuk dekorasi</p>
+                <p>• <strong>Timeline:</strong> Booking vendor utama 6-8 bulan sebelum hari H</p>
+                <p>• <strong>Negosiasi:</strong> Jangan ragu untuk meminta paket custom sesuai kebutuhan</p>
+                <p>• <strong>Backup Plan:</strong> Selalu siapkan plan B untuk vendor critical</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <button class="float-btn" onclick="scrollToTop()" title="Scroll to Top">↑</button>
+        <button class="float-btn" onclick="openChat('Customer Service')" title="Chat">💬</button>
+        <button class="float-btn" onclick="openModal('budgetModal')" title="Budget">💰</button>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="showPage('homePage', event)">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </div>
+        <div class="nav-item" onclick="showPage('woPage', event)">
+            <div class="nav-icon">📋</div>
+            <div>WO</div>
+        </div>
+        <div class="nav-item" onclick="showPage('mcPage', event)">
+            <div class="nav-icon">🎤</div>
+            <div>MC</div>
+        </div>
+        <div class="nav-item" onclick="showPage('iconsPage', event)">
+            <div class="nav-icon">🎨</div>
+            <div>Icons</div>
+        </div>
+        <div class="nav-item" onclick="openModal('budgetModal')">
+            <div class="nav-icon">
+                💰
+                <span class="badge-count" id="cartCount">0</span>
+            </div>
+            <div>Budget</div>
+        </div>
+    </div>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Budget Modal -->
+    <div id="budgetModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('budgetModal')">&times;</span>
+            <div class="modal-title">💰 Budget Planning</div>
+            
+            <div id="budgetList">
+                <!-- Budget items will be populated here -->
+            </div>
+            
+            <div class="budget-total" id="budgetTotal">
+                Total: Rp 0
+            </div>
+            
+            <button class="btn btn-primary" onclick="clearBudget()">
+                🗑️ Hapus Semua
+            </button>
+            <button class="btn" onclick="closeModal('budgetModal')" style="background: #666; color: white; margin-top: 0.5rem;">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- Checklist Modal -->
+    <div id="checklistModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('checklistModal')">&times;</span>
+            <div class="modal-title">📋 Wedding Checklist</div>
+            <div style="color: #666; margin-bottom: 1rem; font-size: 0.9rem;">
+                Timeline persiapan pernikahan yang recommended
+            </div>
+            
+            <div id="checklistContainer">
+                <!-- Checklist items will be populated here -->
+            </div>
+            
+            <button class="btn" onclick="closeModal('checklistModal')" style="background: #666; color: white; margin-top: 1rem;">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('chatModal')">&times;</span>
+            <div class="modal-title">💬 Chat dengan Vendor</div>
+            
+            <div class="chat-box">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Chat messages will appear here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Ketik pesan Anda...">
+                    <button class="btn-wo btn-wo-primary" onclick="sendMessage()" style="padding: 0.8rem 1.5rem;">
+                        Kirim
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Package Modal -->
+    <div id="packageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('packageModal')">&times;</span>
+            <div class="modal-title">🎁 Wedding Package</div>
+            
+            <div class="package-card">
+                <div class="package-title">Paket Premium</div>
+                <div class="package-price">Rp 150.000.000</div>
+                <ul class="package-includes">
+                    <li>Wedding Organizer Full Service</li>
+                    <li>Dekorasi Premium</li>
+                    <li>Fotografi & Videografi</li>
+                    <li>Catering 200 orang</li>
+                    <li>MC Professional</li>
+                    <li>Make Up Artist</li>
+                </ul>
+                <button class="btn btn-primary" onclick="addToCart('Paket Premium', 150000000)">
+                    + Tambah ke Budget
+                </button>
+            </div>
+            
+            <div class="package-card">
+                <div class="package-title">Paket Standard</div>
+                <div class="package-price">Rp 75.000.000</div>
+                <ul class="package-includes">
+                    <li>Wedding Organizer Basic</li>
+                    <li>Dekorasi Standard</li>
+                    <li>Fotografi Only</li>
+                    <li>Catering 150 orang</li>
+                </ul>
+                <button class="btn btn-primary" onclick="addToCart('Paket Standard', 75000000)">
+                    + Tambah ke Budget
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
